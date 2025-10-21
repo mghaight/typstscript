@@ -2,6 +2,6 @@
 name = "typstscript"
 version = "0.1.0"
 entry = "lib.typ"
-authors = ["Mackenzie G. Haight]
+authors = ["Mackenzie G. Haight"]
 description = "Transliteration utilities for Indic scripts"
 license = "MIT"
