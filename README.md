@@ -1,6 +1,6 @@
 # Typstscript
 
-Typstscript is a Typst package that transliterates IAST input into Devanagari characters at compile time.
+Typstscript is a Typst package that transliterates Latin-script input (IAST or Harvard-Kyoto) into Indic scripts. The initial targets are Devanagari and Kannada.
 
 ## Usage
 
@@ -9,9 +9,13 @@ Typstscript is a Typst package that transliterates IAST input into Devanagari ch
 
 #typstscript()[oṃ namaḥ śivāya]
 #typstscript(scheme: "harvard-kyoto")[oM namaH zivAya]
+#typstscript(script: "kannada")[ēkō devāḥ]
+#typstscript(scheme: "harvard-kyoto", script: "kannada")[OM namaH zIvAya]
+#typstscript(unicode-om: false)[oṃ]
 ```
 
-- `typstscript()[...]` defaults to the IAST scheme.
-- Select the Harvard-Kyoto scheme with `scheme: "harvard-kyoto"`.
+- `scheme` selects the transliteration input (defaults to `"iast"`).
+- `script` selects the output script (defaults to `"devanagari"`).
+- In Devanagari output, a standalone `oṃ`/`oṁ` (IAST) or `oM`/`OM` (Harvard-Kyoto) renders as the sacred `ॐ` ligature by default; disable with `unicode-om: false`.
 
-Explore `demo.typ` for a runnable demonstration of both schemes.
+Explore `examples/demo.typ` for a runnable demonstration of the available combinations.

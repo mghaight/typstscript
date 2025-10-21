@@ -307,8 +307,8 @@
 
 #let is-whitespace(cluster) = cluster == " " or cluster == "\t" or cluster == "\n" or cluster == "\r"
 
-#let rewrite-specials(text, scheme-name, script-name) = {
-  if script-name != "devanagari" {
+#let rewrite-specials(text, scheme-name, script-name, unicode-om) = {
+  if not unicode-om or script-name != "devanagari" {
     return text;
   }
   let forms = if scheme-name == "harvard-kyoto" {
@@ -383,7 +383,7 @@
   tokens
 }
 
-#let transliterate-text(text, scheme-name, script-name) = {
+#let transliterate-text(text, scheme-name, script-name, unicode-om) = {
   let scheme = schemes.at(scheme-name, default: none);
   if scheme == none {
     panic("unknown typstscript scheme `" + scheme-name + "` (supported: `iast`, `harvard-kyoto`).");
@@ -393,7 +393,7 @@
     panic("unknown typstscript script `" + script-name + "` (supported: `devanagari`, `kannada`).");
   }
 
-  text = rewrite-specials(text, scheme-name, script-name);
+  text = rewrite-specials(text, scheme-name, script-name, unicode-om);
 
   let vowel-map = scheme.at("vowels");
   let consonant-map = scheme.at("consonants");
@@ -464,7 +464,7 @@
   output
 }
 
-#let typstscript(scheme: "iast", script: "devanagari", body) = {
+#let typstscript(scheme: "iast", script: "devanagari", unicode-om: true, body) = {
   let source = if body.text == none { str(body) } else { body.text };
-  transliterate-text(source, scheme, script)
+  transliterate-text(source, scheme, script, unicode-om)
 }
