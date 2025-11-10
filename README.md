@@ -1,18 +1,18 @@
-# Typstscript
+# Inscript
 
-Typstscript is a Typst package that transliterates Latin-script input (IAST or
+Inscript is a Typst package that transliterates Latin-script input (IAST or
 Harvard-Kyoto) into Indic scripts.
 
 ## Usage
 
 ```typst
-#import "@local/typstscript:0.1.0": typstscript
+#import "@local/inscript:0.1.0": inscript 
 
-#typstscript()[oṃ namaḥ śivāya]
-#typstscript(scheme: "harvard-kyoto")[oM namaH zivAya]
-#typstscript(script: "kannada")[ēkō devāḥ]
-#typstscript(scheme: "harvard-kyoto", script: "kannada")[OM namaH zIvAya]
-#typstscript(unicode-om: false)[oṃ]
+#inscript()[oṃ namaḥ śivāya]
+#inscript(scheme: "harvard-kyoto")[oM namaH zivAya]
+#inscript(script: "kannada")[ēkō devāḥ]
+#inscript(scheme: "harvard-kyoto", script: "kannada")[OM namaH zIvAya]
+#inscript(unicode-om: false)[oṃ]
 ```
 
 - `scheme` selects the transliteration input (defaults to `"iast"`).

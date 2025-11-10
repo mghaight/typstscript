@@ -386,11 +386,11 @@
 #let transliterate-text(text, scheme-name, script-name, unicode-om) = {
   let scheme = schemes.at(scheme-name, default: none);
   if scheme == none {
-    panic("unknown typstscript scheme `" + scheme-name + "` (supported: `iast`, `harvard-kyoto`).");
+    panic("unknown inscript scheme `" + scheme-name + "` (supported: `iast`, `harvard-kyoto`).");
   }
   let script = scripts.at(script-name, default: none);
   if script == none {
-    panic("unknown typstscript script `" + script-name + "` (supported: `devanagari`, `kannada`).");
+    panic("unknown inscript script `" + script-name + "` (supported: `devanagari`, `kannada`).");
   }
 
   text = rewrite-specials(text, scheme-name, script-name, unicode-om);
@@ -464,7 +464,7 @@
   output
 }
 
-#let typstscript(scheme: "iast", script: "devanagari", unicode-om: true, body) = {
+#let inscript(scheme: "iast", script: "devanagari", unicode-om: true, body) = {
   let source = if body.text == none { str(body) } else { body.text };
   transliterate-text(source, scheme, script, unicode-om)
 }
