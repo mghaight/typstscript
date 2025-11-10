@@ -17,3 +17,4 @@ Harvard-Kyoto) into Indic scripts.
 
 - `scheme` selects the transliteration input (defaults to `"iast"`).
 - `script` selects the output script (defaults to `"devanagari"`).
+- `unicode-om` toggles the optional `oṃ` (ॐ) ligature (defaults to `true`)
